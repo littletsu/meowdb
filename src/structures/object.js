@@ -32,6 +32,19 @@ class MeowObjectDB {
         });
         Utils.saveData(path.join(this._dir, `${this._name}.json`), data);
     }
+    
+    /**
+     * Return this current MeowObjectDB as a JSON object
+     * @returns {object}
+     */
+    toJSON() {
+        let data = {}
+        Object.entries(this).forEach((o) => {
+            if (o[0].startsWith("_")) return;
+            data[o[0]] = o[1];
+        });
+        return data;
+    }
 }
 
 module.exports = MeowObjectDB;
